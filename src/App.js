@@ -1,10 +1,10 @@
 import './App.css';
+import SearchBar from './Components/searchbar/searchBar';
 
 function App() {
   return (
     <>
-      <navBar />
-      <myCities />
+      <SearchBar />
     </>
   );
 }

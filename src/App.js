@@ -1,10 +1,13 @@
 import './App.css';
-import SearchBar from './Components/searchbar/searchBar';
+import React from 'react';
+import NavBar from './Components/navbar/navBar';
+import WeatherDetails from './Components/mainpage/detailsPage';
 
 function App() {
   return (
     <>
-      <SearchBar />
+      <NavBar />
+      <WeatherDetails />
     </>
   );
 }

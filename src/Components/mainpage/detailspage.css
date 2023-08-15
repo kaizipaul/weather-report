@@ -1,3 +1,49 @@
 .main-page {
-  padding: 1rem 1.5rem;
+  display: flex;
+  padding: 1rem 2rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.city-heading {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.temperature-main {
+  font-size: 10rem;
+}
+
+.temperature-range {
+  display: flex;
+  gap: 1rem;
+}
+
+.general-conditions {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.current-conditions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2.5rem;
+  padding: 1rem;
+  font-size: 0.9rem;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.weatherdata {
+  font-weight: 700;
+  font-size: 1.1rem;
 }

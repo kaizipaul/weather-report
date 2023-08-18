@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './detailspage.css';
-import { FaDroplet } from 'react-icons/fa6';
-import { FiSun } from 'react-icons/fi';
+import { FiSun, FiDroplet } from 'react-icons/fi';
 import { PiWaves } from 'react-icons/pi';
 import { Card, CardBody } from '@chakra-ui/react';
 
@@ -47,13 +46,13 @@ const WeatherDetails = () => {
             <div className="wind column">
               <PiWaves size="2.3rem" />
               <p className="weatherdata">
-                {weatherData.windspeed}
+                {Math.round(weatherData.windspeed)}
                 km/h
               </p>
               <p>Wind</p>
             </div>
             <div className="humidity column">
-              <FaDroplet size="2.3rem" />
+              <FiDroplet size="2.3rem" />
               <p className="weatherdata">85%</p>
               <p>Humidity</p>
             </div>

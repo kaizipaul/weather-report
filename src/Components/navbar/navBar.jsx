@@ -1,5 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import './navbar.css';
+import { NavLink } from 'react-router-dom';
 import React from 'react';
 import {
   Menu,
@@ -25,9 +26,11 @@ const NavBar = () => (
         variant="outline"
       />
       <MenuList>
-        <MenuItem icon={<StarIcon />}>
-          My Cities
-        </MenuItem>
+        <NavLink className="links" to="/mycities">
+          <MenuItem icon={<StarIcon />}>
+            My Cities
+          </MenuItem>
+        </NavLink>
         <MenuItem icon={<Search2Icon />}>
           Search
         </MenuItem>

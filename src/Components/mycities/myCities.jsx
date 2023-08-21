@@ -1,6 +1,7 @@
-const myCities = () => {
-  // this component shows the cities the user has added into their collection
-  // conditional rendering is used with isAdded?
-};
+import React from 'react';
 
-export default myCities;
+const MyCities = () => (
+  <h2>My Cities</h2>
+);
+
+export default MyCities;

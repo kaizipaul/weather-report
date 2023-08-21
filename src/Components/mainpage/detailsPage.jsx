@@ -1,21 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import './detailspage.css';
-import { FiSun, FiDroplet } from 'react-icons/fi';
-import { PiWaves } from 'react-icons/pi';
+import { FiDroplet } from 'react-icons/fi';
+import { PiWaves, PiThermometerHot } from 'react-icons/pi';
 import { Card, CardBody } from '@chakra-ui/react';
 
 const WeatherDetails = () => {
   const [weatherData, setWeatherData] = useState({});
+  const [location, setLocation] = useState({});
   // // const [forecastData, setForecastData] = useState([]);
 
   useEffect(() => {
     // You should adjust this code to handle data from your specific API.
     const fetchWeatherData = async () => {
       try {
-        const response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&hourly=temperature_2m&daily=sunrise,sunset,uv_index_max&current_weather=true&timezone=auto');
+        const response = await fetch('http://api.weatherapi.com/v1/current.json?key=dc161bae885b4480a84142424231808&q=London&aqi=no');
         const data = await response.json();
-        console.log(data.current_weather);
-        setWeatherData(data.current_weather);
+        console.log(data);
+        setWeatherData(data.current);
+        setLocation(data.location);
         // setForecastData(data.forecast);
       } catch (error) {
         console.error('Error fetching weather data:', error);
@@ -27,13 +29,13 @@ const WeatherDetails = () => {
 
   return (
     <div className="main-page">
-      <h2 className="city-heading">Berlin</h2>
+      <h2 className="city-heading">{location.name}</h2>
       <p className="temperature-main">
-        {Math.round(weatherData.temperature)}
+        {Math.round(weatherData.temp_c)}
         °
       </p>
       <div className="general-conditions">
-        <h3>Sunny</h3>
+        {/* <h3>{weatherData.condition}</h3> */}
         <p className="temperature-range">
           <p>H:</p>
           {' '}
@@ -46,20 +48,26 @@ const WeatherDetails = () => {
             <div className="wind column">
               <PiWaves size="2.3rem" />
               <p className="weatherdata">
-                {Math.round(weatherData.windspeed)}
+                {Math.round(weatherData.wind_kph)}
                 km/h
               </p>
               <p>Wind</p>
             </div>
             <div className="humidity column">
               <FiDroplet size="2.3rem" />
-              <p className="weatherdata">85%</p>
+              <p className="weatherdata">
+                {weatherData.humidity}
+                %
+              </p>
               <p>Humidity</p>
             </div>
             <div className="sunrise column">
-              <FiSun size="2.3rem" />
-              <p className="weatherdata">6:30</p>
-              <p>Sunrise</p>
+              <PiThermometerHot size="2.3rem" />
+              <p className="weatherdata">
+                {Math.round(weatherData.feelslike_c)}
+                °
+              </p>
+              <p>Feels Like</p>
             </div>
           </div>
         </CardBody>

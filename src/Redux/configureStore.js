@@ -1,8 +1,12 @@
-// import { configureStore } from '@reduxjs/toolkit'
-// import rootReducer from './reducers'
+import { configureStore, applyMiddleware } from '@reduxjs/toolkit';
+import logger from 'redux-logger';
+import { detailsSlice } from './weatherdetails/detailsPage';
 
-// const store = configureStore({
-//   reducer: rootReducer,
-// })
+const store = configureStore({
+  reducer: {
+    weatherDetails: detailsSlice,
+  },
+},
+applyMiddleware(logger));
 
-// export default store
+export default store;

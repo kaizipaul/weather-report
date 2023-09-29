@@ -1,11 +1,33 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+// import { selectCity } from './actions';
 
-const SearchBar = () => {
-  const [city, setCity] = useState('');
-  // this component takes in a name (string) and then sends a GET request to geocoding API
-  // the results are then displayed, the lat & long are then sent as a GET request to the main API
+function Search() {
+  const [searchTerm, setSearchTerm] = useState('');
+  const dispatch = useDispatch();
+
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    dispatch(selectCity(searchTerm));
+  };
+
   return (
-    <input value={city} onChange={(e) => setCity(e.target.value)} placeholder="Enter city name" type="text" />
+    <div className="search-container">
+      <form onSubmit={handleSearchSubmit}>
+        <input
+          type="text"
+          placeholder="Enter a city name"
+          value={searchTerm}
+          onChange={handleSearchChange}
+        />
+        <button type="submit">Search</button>
+      </form>
+    </div>
   );
-};
-export default SearchBar;
+}
+
+export default Search;

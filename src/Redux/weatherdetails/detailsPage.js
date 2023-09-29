@@ -4,7 +4,7 @@ const apiUrl = 'http://api.weatherapi.com/v1/current.json?key=dc161bae885b4480a8
 
 export const initialState = {};
 
-export const getCharacter = createAsyncThunk('home/getDetails',
+export const getWeatherDetails = createAsyncThunk('home/getDetails',
   async () => {
     const response = await fetch(`${apiUrl}`);
     const data = await response.json();
@@ -20,12 +20,12 @@ export const getCharacter = createAsyncThunk('home/getDetails',
   });
 
 export const detailsSlice = createSlice({
-  name: 'city',
+  name: 'currentConditions',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(getCharacter.pending, () => initialState);
-    builder.addCase(getCharacter.fulfilled, (state, action) => action.payload);
+    builder.addCase(getWeatherDetails.pending, () => initialState);
+    builder.addCase(getWeatherDetails.fulfilled, (state, action) => action.payload);
   },
 });
 

@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-// import { selectCity } from './actions';
+import { useDispatch, useSelector } from 'react-redux';
+import { getCityName, initialState } from '../../Redux/search/searchBar';
 
 function Search() {
   const [searchTerm, setSearchTerm] = useState('');
   const dispatch = useDispatch();
+  const getCity = useSelector((state) => state.searchBar);
 
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
@@ -12,7 +13,7 @@ function Search() {
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
-    dispatch(selectCity(searchTerm));
+    dispatch(getCityName(searchTerm));
   };
 
   return (
@@ -26,6 +27,17 @@ function Search() {
         />
         <button type="submit">Search</button>
       </form>
+      <div>
+        {getCity === initialState ? (
+          <div>
+            <p>no results</p>
+          </div>
+        ) : (
+          <div>
+            <p>{getCity.name}</p>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

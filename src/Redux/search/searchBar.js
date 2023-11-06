@@ -17,7 +17,7 @@ export const getCityName = createAsyncThunk('home/getCityName',
     return cityData;
   });
 
-const getCitySlice = createSlice({
+const searchSlice = createSlice({
   name: 'search',
   initialState,
   reducers: {},
@@ -27,6 +27,5 @@ const getCitySlice = createSlice({
   },
 });
 
-export const { selectCity } = getCitySlice.actions;
-
-export default getCitySlice.reducer;
+// export const { selectCity } = searchSlice.actions;
+export default searchSlice.reducer;

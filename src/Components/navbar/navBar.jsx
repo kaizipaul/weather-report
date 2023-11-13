@@ -43,7 +43,9 @@ const NavBar = () => (
       </MenuList>
     </Menu>
     <div>
-      <Search2Icon />
+      <NavLink to="/search">
+        <Search2Icon />
+      </NavLink>
     </div>
   </div>
 );

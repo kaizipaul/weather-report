@@ -5,16 +5,17 @@ import { Route, Routes } from 'react-router-dom';
 import NavBar from './Components/navbar/navBar';
 // import WeatherDetails from './Components/mainpage/detailsPage';
 import MyCities from './Components/mycities/myCities';
-import SearchBar from './Components/searchbar/searchBar';
+import Search from './Components/searchbar/searchBar';
 
 function App() {
   return (
     <>
       <NavBar />
       <MyCities />
-      <SearchBar />
+      <Search />
       <Routes>
-        <Route exact path="/mycities" element={<MyCities />} />
+        <Route exact path="/" element={<MyCities />} />
+        <Route exact path="/search" element={<Search />} />
       </Routes>
     </>
   );

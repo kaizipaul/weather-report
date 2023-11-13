@@ -7,6 +7,7 @@ import { Card, CardBody } from '@chakra-ui/react';
 import { getWeatherDetails, initialState } from '../../Redux/weatherdetails/detailsPage';
 
 const WeatherDetails = () => {
+  // fetch state from redux store
   const details = useSelector((state) => state.weatherDetails);
   const dispatch = useDispatch();
 

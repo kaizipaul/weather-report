@@ -13,7 +13,7 @@ export const getCityName = createAsyncThunk('search/getCityName',
       name: city.name,
       country: city.country,
     }));
-    return cityData.cities;
+    return cityData;
   });
 
 export const initialState = {
@@ -41,6 +41,5 @@ export const searchSlice = createSlice({
   },
 });
 
-export const cityList = (state) => state.search.cities;
 // export const { selectCity } = searchSlice.actions;
 export default searchSlice.reducer;

@@ -1,15 +1,13 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore, combineReducers } from '@reduxjs/toolkit';
 // import logger from 'redux-logger';
-import { detailsSlice } from './weatherdetails/detailsPage';
+// import { detailsSlice } from './weatherdetails/detailsPage';
 import { cardSlice } from './weatherCard/weatherCard';
 import { searchSlice } from './search/searchBar';
 
+const reducer = combineReducers({ cardSlice, searchSlice });
+
 const store = configureStore({
-  reducer: {
-    details: detailsSlice,
-    card: cardSlice,
-    search: searchSlice,
-  },
+  reducer,
 });
 
 export default store;

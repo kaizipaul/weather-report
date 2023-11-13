@@ -6,9 +6,9 @@ import { searchSlice } from './search/searchBar';
 
 const store = configureStore({
   reducer: {
-    weatherDetails: detailsSlice,
-    weatherCard: cardSlice,
-    searchBar: searchSlice,
+    details: detailsSlice,
+    card: cardSlice,
+    search: searchSlice,
   },
 });
 

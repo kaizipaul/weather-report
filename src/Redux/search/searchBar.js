@@ -10,34 +10,22 @@ export const getCityName = createAsyncThunk('search/getCityName',
     const response = await fetch(`${apiUrl}&q=${searchTerm}`);
     const data = await response.json();
     const cityData = data.map((city) => ({
+      id: city.id,
       name: city.name,
       country: city.country,
     }));
     return cityData;
   });
 
-export const initialState = {
-  cities: [],
-  status: 'idle',
-  error: null,
-};
+export const initialState = [];
 
 export const searchSlice = createSlice({
   name: 'search',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(getCityName.pending, (state) => {
-      state.status = 'loading';
-    });
-    builder.addCase(getCityName.fulfilled, (state, action) => {
-      state.status = 'success';
-      state.cities = action.payload;
-    });
-    builder.addCase(getCityName.rejected, (state, action) => {
-      state.status = 'failed';
-      state.error = action.error.message;
-    });
+    builder.addCase(getCityName.pending, () => initialState);
+    builder.addCase(getCityName.fulfilled, (state, action) => action.payload);
   },
 });
 

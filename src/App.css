@@ -1,3 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&display=swap');
+
+@font-face {
+  font-family: 'MonaSpace Neon';
+  src:
+    local('MonaSpace Neon Regular'),
+    url('./fonts/MonaspaceNeon-Regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'MonaSpace Neon Bold';
+  src:
+    local('MonaSpace Neon bold'),
+    url('./fonts/MonaspaceNeon-Bold.woff') format('woff');
+}
+
 * {
   box-sizing: border-box;
   padding: 0;

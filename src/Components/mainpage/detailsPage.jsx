@@ -10,13 +10,20 @@ import { getWeatherDetails, initialState } from '../../Redux/weatherdetails/deta
 const WeatherDetails = () => {
   // fetch state from redux store
   const details = useSelector((state) => state.details);
-  console.log(details);
   const id = useParams();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getWeatherDetails(id.id));
-  });
+    const fetchData = async () => {
+      try {
+        await dispatch(getWeatherDetails(id.id));
+      } catch (error) {
+        throw error('Error fetching weather details:', error);
+      }
+    };
+
+    fetchData();
+  }, [dispatch, id]);
 
   return (
     <div>
@@ -28,11 +35,11 @@ const WeatherDetails = () => {
         <div className="main-page">
           <h2 className="city-heading">{details.name}</h2>
           <p className="temperature-main">
-            {Math.round(details.temp_c)}
+            {Math.round(details.temperature)}
             °
           </p>
           <div className="general-conditions">
-            {/* <h3>{weatherData.condition}</h3> */}
+            <h3>{details.conditions}</h3>
             <p className="temperature-range">
               <p>H:</p>
               {' '}
@@ -45,7 +52,7 @@ const WeatherDetails = () => {
                 <div className="wind column">
                   <PiWaves size="2.3rem" />
                   <p className="weatherdata">
-                    {Math.round(details.wind_kph)}
+                    {Math.round(details.wind)}
                     km/h
                   </p>
                 </div>
@@ -59,7 +66,7 @@ const WeatherDetails = () => {
                 <div className="sunrise column">
                   <PiThermometerHot size="2.3rem" />
                   <p className="weatherdata">
-                    {Math.round(details.feelslike_c)}
+                    {Math.round(details.heatindex)}
                     °
                   </p>
                 </div>

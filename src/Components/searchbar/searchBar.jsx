@@ -11,7 +11,6 @@ function Search() {
   const dispatch = useDispatch();
   // accessing the reducer state
   const getCity = useSelector((state) => state.search);
-  console.log(getCity);
 
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);

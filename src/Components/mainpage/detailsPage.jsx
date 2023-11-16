@@ -33,18 +33,13 @@ const WeatherDetails = () => {
         </div>
       ) : (
         <div className="main-page">
-          <h2 className="city-heading">{details.name}</h2>
+          <h2 className="city-heading">{details.name && details.name.toUpperCase()}</h2>
           <p className="temperature-main">
             {Math.round(details.temperature)}
             °
           </p>
           <div className="general-conditions">
             <h3>{details.conditions}</h3>
-            <p className="temperature-range">
-              <p>H:</p>
-              {' '}
-              <p>L:</p>
-            </p>
           </div>
           <Card backgroundColor="gray.100">
             <CardBody>

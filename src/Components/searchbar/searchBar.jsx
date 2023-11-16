@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { Input } from '@chakra-ui/react';
 import { getCityName, initialState } from '../../Redux/search/searchBar';
 // import WeatherDetails from '../mainpage/detailsPage';
 
@@ -17,24 +18,14 @@ function Search() {
     dispatch(getCityName(searchTerm));
   };
 
-  const handleSearchSubmit = (e) => {
-    e.preventDefault();
-    if (searchTerm.trim() !== '') {
-      dispatch(getCityName(searchTerm));
-    }
-  };
-
   return (
     <div className="search-container">
-      <form onSubmit={handleSearchSubmit}>
-        <input
-          type="text"
-          placeholder="Enter a city name"
-          value={searchTerm}
-          onChange={handleSearchChange}
-        />
-        <button type="submit">Search</button>
-      </form>
+      <Input
+        variant="filled"
+        placeholder="Enter a city name"
+        value={searchTerm}
+        onChange={handleSearchChange}
+      />
       <div>
         {getCity === initialState ? (
           <div><p>No results</p></div>) : (

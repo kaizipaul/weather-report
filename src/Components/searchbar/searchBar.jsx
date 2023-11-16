@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getCityName } from '../../Redux/search/searchBar';
+import { getCityName, initialState } from '../../Redux/search/searchBar';
 
 function Search() {
   // local state to store the searched item
@@ -35,10 +35,16 @@ function Search() {
         <button type="submit">Search</button>
       </form>
       <div>
-        {getCity.length > 0 && (
+        {getCity !== initialState && (
         <ul>
           {getCity.map((getCity) => (
-            <li key={getCity.id}>{getCity.name}</li>
+            <li key={getCity.id}>
+              {getCity.name}
+              {' '}
+              ,
+              {' '}
+              {getCity.country}
+            </li>
           ))}
         </ul>
         )}

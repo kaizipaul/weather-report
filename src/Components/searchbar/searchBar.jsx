@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { getCityName, initialState } from '../../Redux/search/searchBar';
+import WeatherDetails from '../mainpage/detailsPage';
 
 function Search() {
   // local state to store the searched item
@@ -38,13 +40,15 @@ function Search() {
         {getCity !== initialState && (
         <ul>
           {getCity.map((getCity) => (
-            <li key={getCity.id}>
-              {getCity.name}
-              {' '}
-              ,
-              {' '}
-              {getCity.country}
-            </li>
+            <Link className="links" to={`/details/${getCity.id}`} element={<WeatherDetails key={getCity.id} />} key={getCity.id}>
+              <li key={getCity.id}>
+                {getCity.name}
+                {' '}
+                ,
+                {' '}
+                {getCity.country}
+              </li>
+            </Link>
           ))}
         </ul>
         )}

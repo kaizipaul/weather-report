@@ -4,16 +4,19 @@ import { useSelector, useDispatch } from 'react-redux';
 import { FiDroplet } from 'react-icons/fi';
 import { PiWaves, PiThermometerHot } from 'react-icons/pi';
 import { Card, CardBody } from '@chakra-ui/react';
+import { useParams } from 'react-router-dom';
 import { getWeatherDetails, initialState } from '../../Redux/weatherdetails/detailsPage';
 
 const WeatherDetails = () => {
   // fetch state from redux store
-  const details = useSelector((state) => state.weatherDetails);
+  const details = useSelector((state) => state.details);
+  console.log(details);
+  const id = useParams();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getWeatherDetails());
-  }, []);
+    dispatch(getWeatherDetails(id.id));
+  });
 
   return (
     <div>
@@ -65,7 +68,6 @@ const WeatherDetails = () => {
           </Card>
         </div>
       )}
-      ;
     </div>
   );
 };

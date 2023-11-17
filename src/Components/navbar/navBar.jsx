@@ -26,14 +26,16 @@ const NavBar = () => (
         variant="outline"
       />
       <MenuList>
-        <NavLink className="links" to="/mycities">
+        <NavLink className="links" to="/">
           <MenuItem icon={<StarIcon />}>
             My Cities
           </MenuItem>
         </NavLink>
-        <MenuItem icon={<Search2Icon />}>
-          Search
-        </MenuItem>
+        <NavLink className="links" to="/search">
+          <MenuItem icon={<Search2Icon />}>
+            Search
+          </MenuItem>
+        </NavLink>
         <MenuItem icon={<FaGithub />}>
           View Source Code
         </MenuItem>

@@ -3,4 +3,9 @@
   justify-content: space-between;
   padding: 1rem 1.5rem;
   font-size: 1.2rem;
+  position: fixed;
+  background-color: rgba(214, 217, 217, 0.5);
+  width: 100%;
+  backdrop-filter: blur(50px);
+  z-index: 10;
 }

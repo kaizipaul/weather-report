@@ -16,6 +16,8 @@ export const getWeatherDetails = createAsyncThunk('weatherDetails/getWeatherDeta
         wind: data.current.wind_kph,
         humidity: data.current.humidity,
         heatindex: data.current.feelslike_c,
+        visibility: data.current.vis_km,
+        precipitation: data.current.precip_mm,
       };
       console.log(details);
       return details;

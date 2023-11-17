@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Input } from '@chakra-ui/react';
+import {
+  Input, List, ListItem, ListIcon,
+} from '@chakra-ui/react';
+import { FaLocationArrow } from 'react-icons/fa6';
 import { getCityName, initialState } from '../../Redux/search/searchBar';
+import './searchBar.css';
 // import WeatherDetails from '../mainpage/detailsPage';
 
 function Search() {
@@ -20,27 +24,29 @@ function Search() {
 
   return (
     <div className="search-container">
+      <h3 className="header">SEARCH</h3>
       <Input
         variant="filled"
         placeholder="Enter a city name"
         value={searchTerm}
         onChange={handleSearchChange}
       />
-      <div>
+      <div className="details">
         {getCity === initialState ? (
           <div><p>No results</p></div>) : (
-            <ul>
+            <List>
               {getCity.map((city) => (
-                <li key={city.id}>
+                <ListItem key={city.id} className="list">
+                  <ListIcon as={FaLocationArrow} />
                   <Link className="links" to={`/details/${city.id}`}>
                     {city.name}
                     ,
                     {' '}
                     {city.country}
                   </Link>
-                </li>
+                </ListItem>
               ))}
-            </ul>
+            </List>
         )}
       </div>
     </div>

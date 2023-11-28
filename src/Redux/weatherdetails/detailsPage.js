@@ -19,10 +19,8 @@ export const getWeatherDetails = createAsyncThunk('weatherDetails/getWeatherDeta
         visibility: data.current.vis_km,
         precipitation: data.current.precip_mm,
       };
-      console.log(details);
       return details;
     }
-    console.error('Invalid data format:', data);
     // Return an appropriate value or throw an error based on your error handling strategy
     return {}; // Returning an empty object for now
   });

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Sheet from 'react-modal-sheet';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import {
   Input, List, ListItem, ListIcon,
 } from '@chakra-ui/react';
@@ -13,6 +13,7 @@ import WeatherDetails from '../mainpage/detailsPage';
 function Search() {
   // local state to store the searched item
   const [searchTerm, setSearchTerm] = useState('');
+  const [selectedCity, setSelectedCity] = useState(null);
   const [isOpen, setOpen] = useState(false);
   // dispatch function to execute an action from the search reducer
   const dispatch = useDispatch();
@@ -24,16 +25,22 @@ function Search() {
     dispatch(getCityName(searchTerm)); // this is a function called from Redux
   };
 
+  const handleCityClick = (city) => {
+    setSelectedCity(city);
+    setOpen(true);
+  };
+
   return (
     <div className="search-container">
       <h3 className="header">SEARCH</h3>
-      <button type="button" onClick={() => setOpen(true)}>Open sheet</button>
 
       <Sheet isOpen={isOpen} onClose={() => setOpen(false)}>
         <Sheet.Container>
           <Sheet.Header />
           <Sheet.Content>
-            <WeatherDetails />
+            <Sheet.Scroller>
+              {selectedCity && <WeatherDetails id={selectedCity.id} />}
+            </Sheet.Scroller>
           </Sheet.Content>
         </Sheet.Container>
         <Sheet.Backdrop />
@@ -51,12 +58,12 @@ function Search() {
               {getCity.map((city) => (
                 <ListItem key={city.id} className="list">
                   <ListIcon as={FaLocationArrow} />
-                  <Link className="links" to={`/details/${city.id}`}>
+                  <button type="button" onClick={() => handleCityClick(city)}>
                     {city.name}
                     ,
                     {' '}
                     {city.country}
-                  </Link>
+                  </button>
                 </ListItem>
               ))}
             </List>

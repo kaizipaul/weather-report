@@ -9,19 +9,20 @@ import {
 import { PiWind, PiThermometerHotDuotone } from 'react-icons/pi';
 import { FaEye } from 'react-icons/fa';
 import { FaDroplet } from 'react-icons/fa6';
-import { useParams } from 'react-router-dom';
+// import { useParams } from 'react-router-dom';
 import { getWeatherDetails, initialState } from '../../Redux/weatherdetails/detailsPage';
 
-const WeatherDetails = () => {
+// eslint-disable-next-line react/prop-types
+const WeatherDetails = ({ id }) => {
   // fetch state from redux store
   const details = useSelector((state) => state.details);
-  const id = useParams();
+  // const id = useParams();
   const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        await dispatch(getWeatherDetails(id.id));
+        await dispatch(getWeatherDetails(id));
       } catch (error) {
         throw error('Error fetching weather details:', error);
       }

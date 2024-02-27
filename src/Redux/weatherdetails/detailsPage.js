@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-const apiUrl = 'http://api.weatherapi.com/v1/current.json?key=dc161bae885b4480a84142424231808';
+const apiUrl = 'https://api.weatherapi.com/v1/current.json?key=dc161bae885b4480a84142424231808';
 
 export const getWeatherDetails = createAsyncThunk('weatherDetails/getWeatherDetails',
   async (id) => {

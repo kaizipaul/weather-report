@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-const apiUrl = 'http://api.weatherapi.com/v1/current.json?key=dc161bae885b4480a84142424231808';
+const apiUrl = 'https://api.weatherapi.com/v1/current.json?key=dc161bae885b4480a84142424231808';
 
 export const getWeatherDetails = createAsyncThunk('weatherDetails/getWeatherDetails',
   async (id) => {
@@ -30,12 +30,24 @@ export const initialState = {};
 export const detailsSlice = createSlice({
   name: 'details',
   initialState,
-  reducers: {},
+  reducers: {
+    // Action 1: Add to collection
+    addtolist: (state, action) => state.map((city) => {
+      if (city.id !== action.payload) return city;
+      return { ...city, added: true };
+    }),
+
+    // Action 2: Remove from collection
+    removefromlist: (state, action) => state.map((city) => {
+      if (city.id !== action.payload) return city;
+      return { ...city, added: false };
+    }),
+  },
   extraReducers: (builder) => {
     builder.addCase(getWeatherDetails.pending, () => initialState);
     builder.addCase(getWeatherDetails.fulfilled, (state, action) => action.payload);
   },
 });
 
-// export const { addtolist, removefromlist } = detailsSlice.actions;
+export const { addtolist, removefromlist } = detailsSlice.actions;
 export default detailsSlice.reducer;

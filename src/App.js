@@ -5,7 +5,7 @@ import { Route, Routes } from 'react-router-dom';
 import NavBar from './Components/navbar/navBar';
 import MyCities from './Components/mycities/myCities';
 import Search from './Components/searchbar/searchBar';
-import WeatherDetails from './Components/mainpage/detailsPage';
+import WeatherDetails from './Components/detailspage/detailsPage';
 
 function App() {
   return (

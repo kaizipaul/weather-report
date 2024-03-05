@@ -8,7 +8,7 @@ import {
 import { FaLocationArrow } from 'react-icons/fa6';
 import { getCityName, initialState } from '../../Redux/search/searchBar';
 import './searchBar.css';
-import WeatherDetails from '../mainpage/detailsPage';
+import WeatherDetails from '../detailspage/detailsPage';
 
 function Search() {
   // local state to store the searched item

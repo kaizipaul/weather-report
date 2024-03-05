@@ -2,12 +2,11 @@
 // searchSlice.js
 
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-
-const apiUrl = 'http://api.weatherapi.com/v1/search.json?key=dc161bae885b4480a84142424231808';
+import { searchapi, API_KEY } from '../../api/api';
 
 export const getCityName = createAsyncThunk('search/getCityName',
   async (searchTerm) => {
-    const response = await fetch(`${apiUrl}&q=${searchTerm}`);
+    const response = await fetch(`${searchapi}?key=${API_KEY}&q=${searchTerm}`);
     const data = await response.json();
     const cityData = data.map((city) => ({
       id: city.id,
@@ -29,5 +28,4 @@ export const searchSlice = createSlice({
   },
 });
 
-// export const { selectCity } = searchSlice.actions;
 export default searchSlice.reducer;

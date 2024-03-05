@@ -1,10 +1,9 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-
-const apiUrl = 'http://api.weatherapi.com/v1/current.json?key=dc161bae885b4480a84142424231808';
+import { detailsapi, API_KEY } from '../../api/api';
 
 export const getWeatherDetails = createAsyncThunk('weatherDetails/getWeatherDetails',
   async (id) => {
-    const response = await fetch(`${apiUrl}&q=id:${id}`);
+    const response = await fetch(`${detailsapi}?key=${API_KEY}&q=id:${id}`);
     const data = await response.json();
 
     // Check if 'data' is an object with a 'location' property

@@ -4,13 +4,18 @@ import { useSelector, useDispatch } from 'react-redux';
 // import { FiDroplet } from 'react-icons/fi';
 // import { PiWaves, PiThermometerHot } from 'react-icons/pi';
 import {
-  Card, CardHeader, CardBody, Grid, GridItem,
+  Card, CardHeader, CardBody, Grid, GridItem, Button,
 } from '@chakra-ui/react';
 import { PiWind, PiThermometerHotDuotone } from 'react-icons/pi';
 import { FaEye } from 'react-icons/fa';
 import { FaDroplet } from 'react-icons/fa6';
 // import { useParams } from 'react-router-dom';
-import { getWeatherDetails, initialState } from '../../Redux/weatherdetails/detailsPage';
+import {
+  getWeatherDetails,
+  initialState,
+  addtolist,
+  removefromlist,
+} from '../../Redux/weatherdetails/detailsPage';
 
 // eslint-disable-next-line react/prop-types
 const WeatherDetails = ({ id }) => {
@@ -31,6 +36,14 @@ const WeatherDetails = ({ id }) => {
     fetchData();
   }, [dispatch, id]);
 
+  const addBtn = (id) => {
+    dispatch(addtolist(id));
+  };
+
+  const removeBtn = (id) => {
+    dispatch(removefromlist(id));
+  };
+
   return (
     <div>
       {details === initialState ? (
@@ -39,6 +52,26 @@ const WeatherDetails = ({ id }) => {
         </div>
       ) : (
         <div className="main-page">
+          <div className="flex end">
+            {!details.added
+            && (
+            <Button
+              colorScheme="gray"
+              onClick={() => addBtn(details.id)}
+            >
+              Add
+            </Button>
+            )}
+            {details.added
+          && (
+          <Button
+            colorScheme="gray"
+            onClick={() => removeBtn(details.id)}
+          >
+            Added
+          </Button>
+          )}
+          </div>
           <h2 className="city-heading">{details.name && details.name.toUpperCase()}</h2>
           <h3 className="general-conditions">{details.conditions}</h3>
           <p className="temperature-main">

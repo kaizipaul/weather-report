@@ -1,4 +1,4 @@
-export const detailsapi = 'http://api.weatherapi.com/v1/current.json';
+export const detailsapi = 'http://api.weatherapi.com/v1/forecast.json';
 
 export const searchapi = 'http://api.weatherapi.com/v1/search.json';
 

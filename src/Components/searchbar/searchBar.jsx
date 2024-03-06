@@ -3,8 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import Sheet from 'react-modal-sheet';
 // import { Link } from 'react-router-dom';
 import {
-  Input, List, ListItem, ListIcon,
+  Input, List, ListItem, ListIcon, InputGroup, InputLeftElement,
 } from '@chakra-ui/react';
+import { Search2Icon } from '@chakra-ui/icons';
 import { FaLocationArrow } from 'react-icons/fa6';
 import { getCityName, initialState } from '../../Redux/search/searchBar';
 import './searchBar.css';
@@ -34,7 +35,7 @@ function Search() {
     <div className="search-container">
       <h3 className="header">SEARCH</h3>
 
-      <Sheet isOpen={isOpen} onClose={() => setOpen(false)}>
+      <Sheet isOpen={isOpen} onClose={() => setOpen(false)} rootId="root">
         <Sheet.Container>
           <Sheet.Header />
           <Sheet.Content>
@@ -45,12 +46,17 @@ function Search() {
         </Sheet.Container>
         <Sheet.Backdrop />
       </Sheet>
-      <Input
-        variant="filled"
-        placeholder="Enter a city name"
-        value={searchTerm}
-        onChange={handleSearchChange}
-      />
+      <InputGroup>
+        <InputLeftElement pointerEvents="none">
+          <Search2Icon color="gray.300" />
+        </InputLeftElement>
+        <Input
+          variant="filled"
+          placeholder="Search for a city or airport"
+          value={searchTerm}
+          onChange={handleSearchChange}
+        />
+      </InputGroup>
       <div className="details">
         {getCity === initialState ? (
           <div><p>No results</p></div>) : (

@@ -1,11 +1,17 @@
 .navigation {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 1rem 1.5rem;
   font-size: 1.2rem;
   position: fixed;
-  background-color: rgba(214, 217, 217, 0.5);
   width: 100%;
-  backdrop-filter: blur(50px);
   z-index: 10;
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(500px);
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0, rgba(27, 31, 35, 0.15) 0 0 0 1px;
+}
+
+.theme {
+  padding: 0.5rem;
 }

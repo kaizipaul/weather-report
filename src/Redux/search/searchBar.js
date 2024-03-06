@@ -2,12 +2,7 @@
 // searchSlice.js
 
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-<<<<<<< HEAD
-
-const apiUrl = 'https://api.weatherapi.com/v1/search.json?key=dc161bae885b4480a84142424231808';
-=======
 import { searchapi, API_KEY } from '../../api/api';
->>>>>>> dev
 
 export const getCityName = createAsyncThunk('search/getCityName',
   async (searchTerm) => {

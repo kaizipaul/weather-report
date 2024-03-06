@@ -1,10 +1,9 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-
-const apiUrl = 'https://api.weatherapi.com/v1/current.json?key=dc161bae885b4480a84142424231808';
+import { detailsapi, API_KEY } from '../../api/api';
 
 export const getWeatherDetails = createAsyncThunk('weatherDetails/getWeatherDetails',
   async (id) => {
-    const response = await fetch(`${apiUrl}&q=id:${id}`);
+    const response = await fetch(`${detailsapi}?key=${API_KEY}&q=id:${id}`);
     const data = await response.json();
 
     // Check if 'data' is an object with a 'location' property
@@ -14,10 +13,19 @@ export const getWeatherDetails = createAsyncThunk('weatherDetails/getWeatherDeta
         temperature: data.current.temp_c,
         conditions: data.current.condition.text,
         wind: data.current.wind_kph,
+        gusts: data.current.gust_kph,
+        wind_deg: data.current.wind_degree,
+        wind_dir: data.current.wind_dir,
         humidity: data.current.humidity,
         heatindex: data.current.feelslike_c,
         visibility: data.current.vis_km,
         precipitation: data.current.precip_mm,
+        is_sun_up: data.forecast.forecastday[0].astro.is_sun_up,
+        is_moon_up: data.forecast.forecastday[0].astro.is_moon_up,
+        sunrise: data.forecast.forecastday[0].astro.sunrise,
+        sunset: data.forecast.forecastday[0].astro.sunset,
+        temp_high: data.forecast.forecastday[0].day.maxtemp_c,
+        temp_low: data.forecast.forecastday[0].day.mintemp_c,
       };
       return details;
     }

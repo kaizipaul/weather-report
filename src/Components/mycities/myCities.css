@@ -1,6 +1,7 @@
 .section {
   padding: 6rem 1.5rem;
   font-family: 'Inter Tight', sans-serif;
+  height: 100vh;
 }
 
 .header {

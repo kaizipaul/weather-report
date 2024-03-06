@@ -1,0 +1,137 @@
+.main-page {
+  display: flex;
+  padding: 1.5rem 1.5rem;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+  font-family: 'Inter Tight', sans-serif;
+}
+
+.city-heading {
+  font-size: 1.5rem;
+  font-family: 'MonaSpace Neon Bold', monospace;
+}
+
+.card-header {
+  font-weight: 700;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  position: relative;
+  left: 2px;
+  gap: 0.2rem;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: auto;
+}
+
+.card-subtext {
+  font-size: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  left: 7px;
+}
+
+.card-subtext-sun {
+  font-size: 0.9rem;
+  font-weight: 600;
+  position: relative;
+  bottom: -16px;
+}
+
+.card-subtext-dir {
+  font-size: 0.8rem;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  left: 10px;
+}
+
+.label {
+  font-weight: 800;
+}
+
+.card-details {
+  position: relative;
+  left: 2px;
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.card-details-sun {
+  position: relative;
+  left: 2px;
+  top: -25px;
+  font-size: 1.6rem;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-details-wind {
+  position: relative;
+  left: 10px;
+  top: -20px;
+  font-size: 1.6rem;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.temperature-main {
+  text-align: center;
+  font-size: 8.5rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.general-conditions {
+  font-size: 1.2rem;
+}
+
+.conditions {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 0 1.5rem;
+  font-weight: 500;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.compass {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: 16px;
+  top: -20px;
+  font-size: 1.6rem;
+}
+
+.wind-deg {
+  font-weight: 600;
+}
+
+.weatherdata {
+  font-weight: 700;
+  font-size: 1.1rem;
+}

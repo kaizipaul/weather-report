@@ -34,6 +34,9 @@ const WeatherDetails = ({ id }) => {
     fetchData();
   }, [dispatch, id]);
 
+  // TODOS:
+  // 1. fix bug that makes the sunrise/sunset card not render properly
+
   return (
     <>
       <div>
